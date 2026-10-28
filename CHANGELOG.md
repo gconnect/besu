@@ -18,6 +18,7 @@
 - With `--Xevm-v2`, `MessageFrame.getMaybeUpdatedMemory` and `getMaybeUpdatedStorage` are recorded only while a tracer that traces operations runs. [#11690](https://github.com/besu-eth/besu/pull/11690)
 - Update besu-native to 2.1.0 and compute the secp256k1 ECDH key agreements of RLPx handshakes and DiscV5 natively, which removes about 2 MB of allocation per agreement. [#11648](https://github.com/besu-eth/besu/pull/11648)
 - Upgrade Vert.x from 5.1.6 to 5.2.2, which fixes the Vert.x advisories published in October 2026, including HTTP/1.x request smuggling through canonicalized headers, unbounded allocation for compressed WebSocket frames, and an incomplete HTTP client SSL context cache key. [#11770](https://github.com/besu-eth/besu/pull/11770)
+- Support Amsterdam hardfork at genesis on Ephemery, aligning with Ephemery iteration 165 and removing dynamic in-cycle BPO offsets. [#11728](https://github.com/besu-eth/besu/pull/11728)
 
 ## 26.10.2
 
@@ -51,7 +52,6 @@
 - The sequenced transaction pool notifies transaction added and dropped events in the order they happen. Previously a transaction could be notified as dropped before it was notified as added, when another thread replaced it right after it was added, or when it was evicted because the pool was full after adding it. A transaction removed by the timed eviction after it had already been dropped is no longer notified as dropped a second time. [#11685](https://github.com/besu-eth/besu/pull/11685)
 
 ### Additions and Improvements
-- Support Amsterdam hardfork at genesis on Ephemery, aligning with Ephemery iteration 165 and removing dynamic in-cycle BPO offsets. [#11728](https://github.com/besu-eth/besu/pull/11728)
 - `trace_filter` accepts `mode`: `intersection`, the default, or `union`, which matches a trace in either `fromAddress` or `toAddress`. An unknown value is rejected with `-32602`. [#11436](https://github.com/besu-eth/besu/pull/11436)
 - EVM v2 (`--Xevm-v2`) runs every opcode on its own stack and supports tracers. [#11524](https://github.com/besu-eth/besu/pull/11524)
 - EVM v2: add DUP1-16 and SWAP1-16. [#11482](https://github.com/besu-eth/besu/pull/11482)
